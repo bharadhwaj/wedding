@@ -1,11 +1,22 @@
 @font-face {
-  font-family: 'Cushy';
+  font-family: "Cushy";
   src: url("../fonts/Cushy.otf") format("opentype");
 }
 
 /* 
  * All CSS animations starts here
  */
+@keyframes flower-falling {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9, 0.9);
+  }
+
+  100% {
+    -webkit-transform: translate3d(30px, 5000px, 0) rotate(360deg)
+      scale(1.1, 1.1);
+  }
+}
+
 @-webkit-keyframes flower-falling {
   0% {
     -webkit-transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9, 0.9);
@@ -24,6 +35,17 @@
 
   100% {
     -moz-transform: translate(30px, 5000px) rotate(360deg) scale(1.1, 1.1);
+  }
+}
+
+@keyframes venue-cloud-animation {
+  0%,
+  100% {
+    margin-right: 25px;
+  }
+
+  50% {
+    margin-right: 5px;
   }
 }
 
@@ -49,6 +71,16 @@
   }
 }
 
+@keyframes date-cloud-animation {
+  0%,
+  100% {
+    margin-left: 20px;
+  }
+
+  50% {
+    margin-left: 5px;
+  }
+}
 
 @-webkit-keyframes date-cloud-animation {
   0%,
@@ -72,12 +104,9 @@
   }
 }
 
-
-
 /* 
  * All CSS animations ends here
  */
-
 
 /* 
  * Flower shower CSS starts here
@@ -107,19 +136,27 @@
   height: 16px;
   width: 16px;
   border-radius: 50%;
+  transform-origin: left -20px;
   -webkit-transform-origin: left -20px;
+  animation-name: flower-falling;
   -webkit-animation-name: flower-falling;
+  animation-duration: 12s;
   -webkit-animation-duration: 12s;
+  animation-direction: normal;
   -webkit-animation-direction: normal;
+  animation-iteration-count: infinite;
   -webkit-animation-iteration-count: infinite;
+  animation-timing-function: linear;
   -webkit-animation-timing-function: linear;
+  animation-delay: 2s;
   -webkit-animation-delay: 2s;
+  animation-fill-mode: none;
   -webkit-animation-fill-mode: none;
+  animation-play-state: running;
   -webkit-animation-play-state: running;
-  /* or */
+  animation: flower-falling 12s linear 8s infinite;
   -moz-animation: flower-falling 12s linear 8s infinite;
 }
-
 
 .flower-shower span img {
   width: 100%;
@@ -130,6 +167,7 @@
 .flower-shower span:nth-of-type(4n) {
   height: 30px;
   width: 30px;
+  transform-origin: right -30px;
   -webkit-transform-origin: right -30px;
   -moz-transform-origin: right -30px;
 }
@@ -137,6 +175,7 @@
 .flower-shower span:nth-of-type(4n + 1) {
   height: 24px;
   width: 24px;
+  transform-origin: left -30px;
   -webkit-transform-origin: left -30px;
   -moz-transform-origin: left -30px;
 }
@@ -144,14 +183,18 @@
 .flower-shower span:nth-of-type(4n + 2) {
   height: 10px;
   width: 10px;
+  transform-origin: -30px 0;
   -webkit-transform-origin: -30px 0;
   -moz-transform-origin: -30px 0;
 }
 
 /* different speeds, with iteration counts to equal 3minutes approx. */
 .flower-shower span:nth-of-type(4n) {
+  animation-duration: 10s;
   -webkit-animation-duration: 10s;
+  animation-iteration-count: infinite;
   -webkit-animation-iteration-count: infinite;
+  transform-origin: -10px -20px;
   -webkit-transform-origin: -10px -20px;
   -moz-animation-duration: 10s;
   -moz-animation-iteration-count: infinite;
@@ -159,8 +202,11 @@
 }
 
 .flower-shower span:nth-of-type(4n + 1) {
+  animation-duration: 8s;
   -webkit-animation-duration: 8s;
+  animation-iteration-count: infinite;
   -webkit-animation-iteration-count: infinite;
+  transform-origin: 10px -20px;
   -webkit-transform-origin: 10px -20px;
   -moz-animation-duration: 8s;
   -moz-animation-iteration-count: infinite;
@@ -168,8 +214,11 @@
 }
 
 .flower-shower span:nth-of-type(4n + 2) {
+  animation-duration: 5s;
   -webkit-animation-duration: 5s;
+  animation-iteration-count: infinite;
   -webkit-animation-iteration-count: infinite;
+  transform-origin: right -20px;
   -webkit-transform-origin: right -20px;
   -moz-animation-duration: 5s;
   -moz-animation-iteration-count: infinite;
@@ -178,66 +227,81 @@
 
 /* different delays so they don't all start at the same time */
 .flower-shower span:nth-of-type(3n) {
+  animation-delay: 2.3s;
   -webkit-animation-delay: 2.3s;
   -moz-animation-delay: 2.3s;
 }
 
 .flower-shower span:nth-of-type(3n + 1) {
+  animation-delay: 1.5s;
   -webkit-animation-delay: 1.5s;
   -moz-animation-delay: 1.5s;
 }
 
 .flower-shower span:nth-of-type(3n + 2) {
+  animation-delay: 3.4s;
   -webkit-animation-delay: 3.4s;
   -moz-animation-delay: 3.4s;
 }
 
 /* playing with timing functions to make it a teeny bit more random like */
 .flower-shower span:nth-of-type(5n) {
+  animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
 }
 
 .flower-shower span:nth-of-type(5n + 1) {
+  animation-timing-function: ease-out;
   -webkit-animation-timing-function: ease-out;
 }
 
 .flower-shower span:nth-of-type(5n + 2) {
+  animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
 }
 
 .flower-shower span:nth-of-type(5n + 3) {
+  animation-timing-function: ease-in;
   -webkit-animation-timing-function: ease-in;
 }
 
 .flower-shower span:nth-of-type(5n + 4) {
+  animation-timing-function: linear;
   -webkit-animation-timing-function: linear;
 }
 
 .flower-shower span:nth-of-type(11n) {
+  animation-timing-function: cubic-bezier(0.2, 0.3, 0.8, 0.9);
   -webkit-animation-timing-function: cubic-bezier(0.2, 0.3, 0.8, 0.9);
 }
 
 .flower-shower span:nth-of-type(5n) {
+  animation-timing-function: ease-in-out;
   -moz-animation-timing-function: ease-in-out;
 }
 
 .flower-shower span:nth-of-type(5n + 1) {
+  animation-timing-function: ease-out;
   -moz-animation-timing-function: ease-out;
 }
 
 .flower-shower span:nth-of-type(5n + 2) {
+  animation-timing-function: ease;
   -moz-animation-timing-function: ease;
 }
 
 .flower-shower span:nth-of-type(5n + 3) {
+  animation-timing-function: ease-in;
   -moz-animation-timing-function: ease-in;
 }
 
 .flower-shower span:nth-of-type(5n + 4) {
+  animation-timing-function: linear;
   -moz-animation-timing-function: linear;
 }
 
 .flower-shower span:nth-of-type(11n) {
+  animation-timing-function: cubic-bezier(0.2, 0.3, 0.8, 0.9);
   -moz-animation-timing-function: cubic-bezier(0.2, 0.3, 0.8, 0.9);
 }
 
@@ -256,7 +320,9 @@
 
 .flower-shower span:nth-of-type(7n + 6) {
   opacity: 0.6;
+  animation-timing-function: ease-in;
   -webkit-animation-timing-function: ease-in;
+  transform-origin: left 10px;
   -webkit-transform-origin: left 10px;
   -moz-animation-timing-function: ease-in;
   -moz-transform-origin: left 10px;
@@ -269,7 +335,6 @@
 /* 
  * Flower shower CSS ends here
  */
-
 
 /* 
  * Containers starts here
@@ -320,13 +385,14 @@
 .venue-details-container {
   width: 370px;
   height: 350px;
+  animation: venue-cloud-animation ease 2s infinite;
   -webkit-animation: venue-cloud-animation ease 2s infinite;
   -moz-animation: venue-cloud-animation ease 2s infinite;
 }
 
 @media only screen and (max-width: 1056px) {
   .venue-details-container {
-    transform: scale(.75);
+    transform: scale(0.75);
   }
 }
 
@@ -344,7 +410,7 @@
 
 @media only screen and (max-width: 1056px) {
   .date-details-container {
-    transform: scale(.75);
+    transform: scale(0.75);
   }
 }
 
@@ -358,7 +424,6 @@
 /* 
  * Containers ends here
  */
-
 
 /*
  * Container image items CSS starts here
@@ -400,13 +465,11 @@
  * Container image items CSS ends here
  */
 
-
-
 /*
  * Text styles CSS starts here
  */
 .header-text {
-  font-family: 'Homemade Apple';
+  font-family: "Homemade Apple";
   font-size: 24px;
   color: #453c33;
   text-shadow: 1px 1px 0px #fff, 2px 2px 0px #707070;
@@ -421,7 +484,7 @@
 .cloud-text {
   text-align: left;
   color: #fff;
-  font-family: 'Wendy One', cursive;
+  font-family: "Wendy One", cursive;
   font-size: 20px;
   letter-spacing: 2px;
   text-shadow: 1px 1px 0px #629f9f, 2px 2px 0px #000;
@@ -479,7 +542,7 @@
 
 .names {
   width: 260px;
-  font-family: 'Love Light', cursive;
+  font-family: "Love Light", cursive;
   text-align: center;
   color: #453c33;
   align-content: center;
@@ -501,7 +564,7 @@
   margin-top: 20px;
   margin-bottom: 0px;
   color: #453c33;
-  font-family: 'Cushy', cursive;
+  font-family: "Cushy", cursive;
   font-size: 24px;
   letter-spacing: 2px;
   padding-left: 50px;
@@ -517,7 +580,7 @@
 
 .couples-name {
   margin-top: 50px;
-  font-family: 'Cushy', cursive;
+  font-family: "Cushy", cursive;
   font-size: 72px;
   letter-spacing: 4px;
   text-shadow: 3px 3px 0px #fff, 6px 6px 0px #707070;
@@ -525,25 +588,25 @@
 
 .parents-name {
   margin-top: 10px;
-  font-family: 'Cushy', cursive;
+  font-family: "Cushy", cursive;
   font-size: 30px;
 }
 
 .address {
   margin-top: 10px;
-  font-family: 'Cushy', cursive;
+  font-family: "Cushy", cursive;
 }
 
 .subtitle-text {
   margin-top: 30px;
-  font-family: 'Cushy', cursive;
+  font-family: "Cushy", cursive;
   line-height: 30px;
 }
 
 .title-text {
   margin-top: 60px;
   margin-bottom: 30px;
-  font-family: 'Cushy', cursive;
+  font-family: "Cushy", cursive;
   font-size: 60px;
   color: #fff;
   letter-spacing: 2px;
@@ -553,7 +616,7 @@
 .venue-name {
   margin-top: 30px;
   margin-bottom: 20px;
-  font-family: 'Cushy', cursive;
+  font-family: "Cushy", cursive;
   font-size: 50px;
   letter-spacing: 4px;
   text-shadow: 2px 2px 0px #fff, 4px 4px 0px #707070;

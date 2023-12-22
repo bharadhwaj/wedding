@@ -30,18 +30,29 @@
 
     <link href="./assets/css/style.css" rel="stylesheet" type="text/css" />
     <script>
+
+      function playSong() {
+        setTimeout(function() {
+          const songElement = document.getElementById("wedding-song");
+          if (!myAudio.paused || myAudio.currentTime) {
+            songElement.play();
+          }
+        }, 1000);
+      }
+
       window.onload = function() {
         const loadingElement = document.getElementById("loading-element");
         const mainContentElement = document.getElementById("loaded-element");
 
         loadingElement.classList.add("hide");
         mainContentElement.classList.remove("hide");
-
-        setTimeout(function() {
-          const songElement = document.getElementById("wedding-song");
-          songElement.play();
-        }, 1000);
       }
+
+      window.onmousemove = playSong;
+      window.onmouseover = playSong;
+      window.onscroll = playSong;
+      window.onkeydown = playSong;
+      window.ontouchstart = playSong;
     </script>
   </head>
   <body>

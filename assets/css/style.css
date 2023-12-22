@@ -593,6 +593,11 @@ body {
   text-decoration-style: dashed;
 }
 
+.invitation-details-text sup {
+  font-size: 20px;
+}
+
+
 .couples-name {
   margin-top: 50px;
   font-family: "Cushy", cursive;

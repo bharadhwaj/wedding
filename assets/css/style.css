@@ -339,11 +339,26 @@
 /* 
  * Containers starts here
  */
+body {
+  margin: 0px;
+}
+
+.hide {
+  display: none!important;
+}
+
+.loading-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .root-container {
   position: fixed;
   background: #c1e8ea url(../images/blue-background.jpg);
   overflow-x: hidden;
-  margin: 0px;
   width: 100%;
   height: 100%;
 }
@@ -625,10 +640,6 @@
 .outro-text {
   margin-top: 60px;
   margin-bottom: 60px;
-}
-
-#wedding-song {
-  display: none;
 }
 /*
  * Text styles CSS ends here

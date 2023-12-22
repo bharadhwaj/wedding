@@ -30,14 +30,24 @@
 
     <link href="./assets/css/style.css" rel="stylesheet" type="text/css" />
     <script>
-      function playSong() {
-        setTimeout(function() {
-          const songElement = document.getElementById("wedding-song");
-          if (songElement.paused || songElement.currentTime === 0) {
-            songElement.play();
-          }
-        }, 1000);
+      function debounce(callback, wait) {
+        let timeoutId = null;
+        return () => {
+          window.clearTimeout(timeoutId);
+          timeoutId = window.setTimeout(() => {
+            callback();
+          }, wait);
+        };
       }
+
+      function playSong() {
+        const songElement = document.getElementById("wedding-song");
+        if (songElement.paused || songElement.currentTime === 0) {
+          songElement.play();
+        }
+      }
+
+      const debouncedPlaySong = debounce(playSong, 200);
 
       window.onload = function() {
         const loadingElement = document.getElementById("loading-element");
@@ -47,11 +57,12 @@
         mainContentElement.classList.remove("hide");
       }
 
-      window.onmousemove = playSong;
-      window.onmouseover = playSong;
-      window.onscroll = playSong;
-      window.onkeydown = playSong;
-      window.ontouchstart = playSong;
+      window.onmouseenter = debouncedPlaySong;
+      window.onmouseover = debouncedPlaySong;
+      window.onmousemove = debouncedPlaySong;
+      window.onscroll = debouncedPlaySong;
+      window.onkeydown = debouncedPlaySong;
+      window.ontouchstart = debouncedPlaySong;
     </script>
   </head>
   <body>

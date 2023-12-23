@@ -507,6 +507,11 @@ body {
   text-shadow: 1px 1px 0px #629f9f, 2px 2px 0px #000;
 }
 
+.maps-icon {
+  padding-top: 20px;
+  padding-left: 40px;
+}
+
 .cloud-text sup {
   font-size: 18px;
 }

@@ -1,5 +1,6 @@
 @font-face {
   font-family: "Cushy";
+  src: url("https://cdn.jsdelivr.net/gh/bharadhwaj/wedding@1.1.0/assets/fonts/Cushy.otf") format("opentype");
   src: url("../fonts/Cushy.otf") format("opentype");
 }
 
@@ -357,7 +358,7 @@ body {
 
 .root-container {
   position: fixed;
-  background: #c1e8ea url(../images/blue-background.jpg);
+  background: url(https://cdn.jsdelivr.net/gh/bharadhwaj/wedding@1.1.0/assets/images/blue-background.jpg), url(../images/blue-background.jpg);
   overflow-x: hidden;
   width: 100%;
   height: 100%;
@@ -367,7 +368,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url(../images/dotted-heart-lines.jpg) no-repeat center 120px;
+  background: url(https://cdn.jsdelivr.net/gh/bharadhwaj/wedding@1.1.0/assets/images/dotted-heart-lines.jpg) no-repeat center 120px, url(../images/dotted-heart-lines.jpg) no-repeat center 120px;
   overflow-y: auto;
 }
 
@@ -419,6 +420,7 @@ body {
 .date-details-container {
   width: 370px;
   height: 350px;
+  animation: date-cloud-animation ease 2s infinite;
   -webkit-animation: date-cloud-animation ease 2s infinite;
   -moz-animation: date-cloud-animation ease 2s infinite;
 }
@@ -444,7 +446,7 @@ body {
  * Container image items CSS starts here
  */
 .venue-details {
-  background: url(../images/venue-cloud.png) no-repeat 0 0;
+  background: url(https://cdn.jsdelivr.net/gh/bharadhwaj/wedding@1.1.0/assets/images/venue-cloud.png) no-repeat 0 0, url(../images/venue-cloud.png) no-repeat 0 0;
   width: 100%;
   height: 100%;
   padding-top: 90px;
@@ -452,7 +454,7 @@ body {
 }
 
 .date-details {
-  background: url(../images/date-cloud.png) no-repeat 0 0;
+  background: url(https://cdn.jsdelivr.net/gh/bharadhwaj/wedding@1.1.0/assets/images/date-cloud.png) no-repeat 0 0, url(../images/date-cloud.png) no-repeat 0 0;
   width: 100%;
   height: 100%;
   padding-top: 70px;
@@ -462,8 +464,8 @@ body {
 .name-area-container {
   width: 800px;
   height: 450px;
-  background: url(../images/name-card.png) no-repeat 0 0;
-  background-size: contain;
+  background: url(https://cdn.jsdelivr.net/gh/bharadhwaj/wedding@1.1.0/assets/images/name-card.png) no-repeat 0 0, url(../images/name-card.png) no-repeat 0 0;
+  background-size: contain, contain;
   margin-top: -100px;
   z-index: 11;
 }

@@ -399,8 +399,11 @@ body {
 }
 
 .venue-details-container {
+  position: absolute;
+  right: calc(50vw + 150px);
   width: 370px;
   height: 350px;
+  margin-top: -200px;
   animation: venue-cloud-animation ease 2s infinite;
   -webkit-animation: venue-cloud-animation ease 2s infinite;
   -moz-animation: venue-cloud-animation ease 2s infinite;
@@ -408,6 +411,7 @@ body {
 
 @media only screen and (max-width: 1056px) {
   .venue-details-container {
+    right: calc(50vw + 100px);
     transform: scale(0.75);
   }
 }
@@ -418,6 +422,9 @@ body {
 }
 
 .date-details-container {
+  position: absolute;
+  left: calc(50vw + 150px);
+  margin-top: -120px;
   width: 370px;
   height: 350px;
   animation: date-cloud-animation ease 2s infinite;
@@ -427,7 +434,8 @@ body {
 
 @media only screen and (max-width: 1056px) {
   .date-details-container {
-    transform: scale(0.75);
+    transform: scale(0.8);
+    left: calc(50vw + 100px);
   }
 }
 

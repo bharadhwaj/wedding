@@ -590,6 +590,15 @@ body {
   text-shadow: none;
 }
 
+@media only screen and (max-width: 1056px) {
+  .name-other-letters {
+    font-size: 50px;
+    font-weight: normal;
+    text-shadow: none;
+  }
+}
+
+
 .invitation-details-text {
   margin-top: 20px;
   margin-bottom: 0px;

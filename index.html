@@ -43,12 +43,61 @@
 
       function playSong() {
         const songElement = document.getElementById("wedding-song");
+        const outlineCircleElement = document.getElementById("audio-controller-outline-circle");
+        const playToPauseAnimateElement = document.getElementById("play-to-pause-animate");
         if (songElement.paused || songElement.currentTime === 0) {
           songElement.play();
+          outlineCircleElement.setAttribute("class", "");
+          playToPauseAnimateElement.beginElement();
+        }
+      }
+
+      function pauseSong() {
+        const songElement = document.getElementById("wedding-song");
+        const outlineCircleElement = document.getElementById("audio-controller-outline-circle");
+        const pauseToPlayAnimateElement = document.getElementById('pause-to-play-animate');
+        if (!songElement.paused) {
+          songElement.pause();
+          outlineCircleElement.setAttribute("class", "play");
+          pauseToPlayAnimateElement.beginElement();
         }
       }
 
       const debouncedPlaySong = debounce(playSong, 200);
+
+      function playSongOnAnyInteraction() {
+        window.onmouseenter = debouncedPlaySong;
+        window.onmouseover = debouncedPlaySong;
+        window.onmousemove = debouncedPlaySong;
+        window.onscroll = debouncedPlaySong;
+        window.onkeydown = debouncedPlaySong;
+        window.ontouchstart = debouncedPlaySong;
+        window.ontouchmove = debouncedPlaySong;
+      }
+
+      function resetAllInteraction() {
+        window.onmouseenter = () => {};
+        window.onmouseover = () => {};
+        window.onmousemove = () => {};
+        window.onscroll = () => {};
+        window.onkeydown = () => {};
+        window.ontouchstart = () => {};
+        window.ontouchmove = () => {};
+      }
+
+      function handlePlayPause() {
+        const songElement = document.getElementById("wedding-song");
+        let isPaused = !songElement || songElement.paused || songElement.currentTime === 0;
+
+        resetAllInteraction();
+        if (isPaused) {
+          isPaused = false;
+          playSong();
+        } else {
+          isPaused = true;
+          pauseSong();
+        }
+      }
 
       window.onload = function() {
         const loadingElement = document.getElementById("loading-element");
@@ -56,15 +105,8 @@
 
         loadingElement.classList.add("hide");
         mainContentElement.classList.remove("hide");
+        playSongOnAnyInteraction();
       }
-
-      window.onmouseenter = debouncedPlaySong;
-      window.onmouseover = debouncedPlaySong;
-      window.onmousemove = debouncedPlaySong;
-      window.onscroll = debouncedPlaySong;
-      window.onkeydown = debouncedPlaySong;
-      window.ontouchstart = debouncedPlaySong;
-      window.ontouchmove = debouncedPlaySong;
     </script>
   </head>
   <body>
@@ -75,6 +117,35 @@
 
     <div id="loaded-element" class="root-container hide">
       <div class="dotted-heart-container">
+
+        <!-- Audio Controller -->
+        <div class="audio-controller-container" onclick="handlePlayPause()">
+          <svg width="104" height="104" id="audio-controller">
+            <circle id="audio-controller-outline-circle" cx="51" cy="51" r="50" stroke-dasharray="314" stroke-width="4px" stroke-dashoffset="0" stroke="#453c33" />
+            <line id="audio-controller-pause-left-line" x1="38" y1="30" x2="38" y2="70" stroke-width="4px" style="stroke:#453c33; stroke-linecap:round;" />
+            <path id="audio-controller-pause-right-line" d="M 66 30 L 66 50 L 66 70" rx="10" ry="10" stroke-width="4px" style="stroke:#453c33; fill:#453c33; stroke-linejoin:round; stroke-linecap:round;">
+              <animate
+                id="pause-to-play-animate"
+                attributeName="d"
+                dur="300ms"
+                from="M 66 30 L 66 50 L 66 70"
+                to="M 38 30 L 70 50 L 38 70"
+                begin="indefinite"
+                fill="freeze"
+              />
+            </path>
+            <animate
+              id="play-to-pause-animate"
+              xlink:href="#audio-controller-pause-right-line"
+              attributeName="d"
+              dur="300ms"
+              from="M 38 30 L 70 50 L 38 70"
+              to="M 66 30 L 66 50 L 66 70"
+              fill="freeze"
+              begin="indefinite"
+            />
+          </svg>
+        </div>
 
         <!-- Flower Shower -->
         <div class="flower-shower-container">

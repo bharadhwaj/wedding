@@ -113,7 +113,6 @@
  * Flower shower CSS starts here
  * Animation of flower falling from the top 
  */
-
 .flower-shower-container {
   position: absolute;
   top: -30px;
@@ -448,6 +447,31 @@ body {
 }
 /* 
  * Containers ends here
+ */
+
+
+/*
+ * Audio Controller CSS starts here
+ */
+ .audio-controller-container {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  transform: scale(.5);
+  z-index: 100;
+ }
+
+ #audio-controller-outline-circle {
+	transition: stroke-dashoffset 300ms ease-in;
+	stroke-dashoffset: 0;
+	fill: none;
+}
+
+#audio-controller-outline-circle.play {
+	stroke-dashoffset: 314;
+}
+/*
+ * Audio Controller CSS ends here
  */
 
 /*
